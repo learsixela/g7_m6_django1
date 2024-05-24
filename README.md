@@ -51,10 +51,12 @@ Paso 6: Agregar app al proyecto
 python3 manage.py startapp nombre_app
 ```
 
-Paso 7: Vincular app al proyecto con el nombre de la app 
+Paso 7: Vincular app al proyecto con el nombre de la app en el archivo settings.py de la app principal
+```python
     INSTALLED_APPS=[
     'nombre_app',
     … ]
+```
 
 Paso 8: Crear funciones en views.py de la aplicacion creada
 
