@@ -48,7 +48,7 @@ cd nombre_proyecto
 
 Paso 6: Agregar app al proyecto
 ```bash
-python3 manage.py startapp nombre_proyecto
+python3 manage.py startapp nombre_app
 ```
 
 Paso 7: Vincular app al proyecto con el nombre de la app 
