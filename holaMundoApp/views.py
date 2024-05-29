@@ -8,6 +8,9 @@ def hola(request):
                         <p>Esto es un parrafo desde django</p>
                         """)
 def index(request):
-    return HttpResponse("""
-        <h1>Hola Mundo!!!</h1>
-    """)
+    context = {
+    "nombre": "Julio",
+    "apellido": "Palma",
+    "flanes": ["flan1", "flan2", "flan3"]
+    }
+    return render(request,"index.html",context)
