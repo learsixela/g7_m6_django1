@@ -2,30 +2,29 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="{% static 'img/naranja.jpeg' %}" alt="Only Flans" width="50" /> 
+            <img src="{% static 'img/naranja.jpeg' %}" alt="Only Flans" width="50" />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about/">About</a>
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="productos">Productos</a>
+                    <a class="nav-link" href="{% url 'producto' %}">Productos</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
             <ul class="navbar-nav ms-2 mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item dropdown dropstart">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         {% if user.is_authenticated %}
                         {{ user.get_username }}
                         {% else %}
@@ -34,10 +33,14 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% if user.is_authenticated %}
-                            <li>User: {{ user.get_username }}</li>
-                            <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-success" type="submit">Cerrar sesión</button>
+                            </form>
+                        </li>
                         {% else %}
-                            <li><a href="{% url 'login'%}?next={{request.path}}">Iniciar sesión</a></li>
+                        <li><a class="btn btn-primary" href="{% url 'login' %}">Iniciar sesión</a></li>
                         {% endif %}
                     </ul>
                 </li>

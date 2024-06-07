@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block 'content' %}
-
+<div class="container">
 {% if form.errors %}
 <p>Su nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.</p>
 {% endif %}
@@ -12,31 +12,27 @@
     inicie sesión con una cuenta que tenga acceso.</p>
 {% else %}
 <p>Por favor inicie sesión para ver esta página.</p>
-{% endif %}
+{% endif %} 
 {% endif %}
 
 <form method="post" action="{% url 'login' %}">
+    <h2>Ingresar</h2>
     {% csrf_token %}
-    <table>
-        <tbody>
-            <tr>
-                <td><label for="id_username" class="form-label">Username:</label></td>
-                <td><input type="text" name="username" class="form-control" autofocus="" autocapitalize="none"
-                        autocomplete="username" maxlength="150" required="" id="id_username"></td>
-            </tr>
-            <tr>
-                <td><label for="id_password" class="form-label">Password:</label></td>
-                <td><input type="password" name="password" class="form-control" autocomplete="current-password"
-                        required="" id="id_password">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="mb-3">
+        <label for="id_username" class="form-label">Username:</label>
+        <input type="text" name="username" class="form-control" autofocus="" autocapitalize="none"
+                    autocomplete="username" maxlength="150" required="" id="id_username">
+    </div>
+    <div class="mb-3">
+        <label for="id_password" class="form-label">Password:</label>
+        <input type="password" name="password" class="form-control" autocomplete="current-password"
+                    required="" id="id_password">
+    </div>
     <button type="submit" class="btn btn-primary">Login</button>
     <input type="hidden" name="next" value="">
 </form>
 
 {# Asume que configura la vista de restablecimiento de contraseña en su URLconf #}
 <p><a href="{% url 'password_reset' %}">¿Olvidó su contraseña?</a></p>
-
+</div>
 {% endblock %}

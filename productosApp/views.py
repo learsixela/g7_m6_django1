@@ -14,7 +14,8 @@ def producto(request):
     context = {
         'productos': productos,
         'usuario': 'Israel',
-        'producto1': producto
+        'producto1': producto,
+        'title': 'Productos::',
     }
 
     return render(request,"productos.html",context)

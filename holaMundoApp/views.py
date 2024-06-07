@@ -15,14 +15,22 @@ def index(request):
     context = {
     "nombre": "Julio",
     "apellido": "Palma",
-    "flanes": ["flan1", "flan2", "flan3"]
+    "flanes": ["flan1", "flan2", "flan3"],
+    "title":"HOME::"
     }
     return render(request,"index.html",context)
+
+def acerca(request):
+    context = {
+        "title":"ABOUT::"
+    }
+    return render(request,"about.html",context)
 
 def login(request):
     #get -> mostrar el html
     if request.method == "GET":
-        return render(request,"login2.html")
+        gato ={"title":"Login 2"}
+        return render(request,"login2.html",gato)
     
     #post ->capturar datos desde el html
     if request.method == "POST":
