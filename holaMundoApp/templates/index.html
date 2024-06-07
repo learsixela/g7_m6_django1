@@ -18,7 +18,9 @@
     {% include "navbar.html" %}
     {% endblock %}
     <div class="container">
+
         <h1>Hola {{nombre}} {{apellido}} </h1> 
+        <h2> datos en session {{request.session.email}}</h2>
         <ul>
             {% for flan in flanes %}
             <li>{{flan}}</li>
